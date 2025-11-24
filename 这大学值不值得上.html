@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>救命！这破大学到底值不值我掏的学费+耗的青春？</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B35',
+                        secondary: '#4E5969',
+                        success: '#2ECC71',
+                        danger: '#E74C3C',
+                        warning: '#F39C12',
+                        info: '#3498DB',
+                    },
+                    fontFamily: {
+                        comic: ['Comic Neue', 'cursive'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 2s infinite',
+                        'pulse-slow': 'pulse 3s infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+            }
+            .animate-fade {
+                animation: fadeIn 0.5s ease-in-out;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .meme-border {
+                border: 3px dashed #FF6B35;
+                border-radius: 15px;
+            }
+            .sticker {
+                position: absolute;
+                font-size: 1.5rem;
+                z-index: 10;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-orange-50 to-blue-50 font-sans text-gray-800">
+    <!-- 趣味贴纸元素 -->
+    <div class="sticker top-10 left-5 hidden md:block animate-bounce-slow">💥</div>
+    <div class="sticker top-20 right-10 hidden md:block animate-pulse-slow">🤔</div>
+    <div class="sticker bottom-20 left-10 hidden md:block animate-bounce-slow" style="animation-delay: 0.5s;">😭</div>
+    <div class="sticker bottom-10 right-5 hidden md:block animate-pulse-slow" style="animation-delay: 1s;">💸</div>
+
+    <!-- 导航栏 -->
+    <nav class="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa fa-graduation-cap text-primary text-2xl"></i>
+                <h1 class="text-lg font-bold text-primary font-comic">大学性价比暴击测算仪</h1>
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#home" class="text-gray-600 hover:text-primary transition font-medium">首页</a>
+                <a href="#questionnaire" class="text-gray-600 hover:text-primary transition font-medium">开始测算</a>
+                <a href="#example" class="text-gray-600 hover:text-primary transition font-medium">冤种案例</a>
+            </div>
+            <button class="md:hidden text-gray-600" id="mobile-menu-btn">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- 移动端菜单 -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white/95 px-4 py-2 border-t">
+            <div class="flex flex-col space-y-3">
+                <a href="#home" class="text-gray-600 hover:text-primary transition py-2">首页</a>
+                <a href="#questionnaire" class="text-gray-600 hover:text-primary transition py-2">开始测算</a>
+                <a href="#example" class="text-gray-600 hover:text-primary transition py-2">冤种案例</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首页引导区 -->
+    <section id="home" class="py-16 md:py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent z-0"></div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h1 class="text-[clamp(1.8rem,5vw,3.5rem)] font-bold text-gray-900 mb-4 text-shadow font-comic">
+                救命！这破大学到底值不值我掏的学费+耗的青春？
+            </h1>
+            <p class="text-[clamp(1rem,2vw,1.25rem)] text-gray-600 mb-8 max-w-2xl mx-auto">
+                30秒精准测算，告别内耗！测出你的大学性价比暴击值💥<br>
+                学费、青春、未来...这笔账必须算明白！
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+                <a href="#questionnaire" class="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-full shadow-lg transition card-hover text-lg">
+                    立刻开测，别瞎琢磨了 <i class="fa fa-bolt ml-1"></i>
+                </a>
+                <a href="#example" class="bg-white hover:bg-gray-100 text-primary border-2 border-primary font-bold py-3 px-8 rounded-full shadow transition card-hover text-lg">
+                    先看冤种案例 <i class="fa fa-grin-tears ml-1"></i>
+                </a>
+            </div>
+            <div class="mt-12 max-w-4xl mx-auto">
+                <div class="bg-white/80 rounded-2xl p-6 shadow-lg meme-border">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="text-center p-4 bg-orange-50 rounded-xl">
+                            <i class="fa fa-money text-3xl text-primary mb-2"></i>
+                            <h3 class="font-bold text-gray-800">学费刺客</h3>
+                            <p class="text-sm text-gray-600">看看你的钱花得值不值</p>
+                        </div>
+                        <div class="text-center p-4 bg-blue-50 rounded-xl">
+                            <i class="fa fa-book text-3xl text-info mb-2"></i>
+                            <h3 class="font-bold text-gray-800">上课坐牢</h3>
+                            <p class="text-sm text-gray-600">评估你的学习体验</p>
+                        </div>
+                        <div class="text-center p-4 bg-green-50 rounded-xl">
+                            <i class="fa fa-line-chart text-3xl text-success mb-2"></i>
+                            <h3 class="font-bold text-gray-800">前途无量</h3>
+                            <p class="text-sm text-gray-600">预测毕业后的发展</p>
+                        </div>
+                        <div class="text-center p-4 bg-yellow-50 rounded-xl">
+                            <i class="fa fa-bed text-3xl text-warning mb-2"></i>
+                            <h3 class="font-bold text-gray-800">宿舍生存</h3>
+                            <p class="text-sm text-gray-600">检验你的生活质量</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 问卷区 -->
+    <section id="questionnaire" class="py-16 bg-white relative">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-bold mb-2 text-center font-comic">填写以下信息，精准测算</h2>
+            <p class="text-gray-600 text-center mb-2">诚实填写，别自欺欺人！数据越真实，结果越准哦~</p>
+            <p class="text-center text-sm text-gray-500 mb-12">测完才知道，原来我不是在上学，是在当冤种/搞投资！</p>
+            
+            <div class="max-w-4xl mx-auto bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-lg p-6 md:p-8 meme-border">
+                <!-- 进度条 -->
+                <div class="mb-8">
+                    <div class="flex justify-between text-sm text-gray-500 mb-2">
+                        <span>基础成本</span>
+                        <span>学习生活</span>
+                        <span>发展前景</span>
+                        <span>附加福利</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-3">
+                        <div id="progress-bar" class="bg-primary h-3 rounded-full transition-all duration-500" style="width: 25%"></div>
+                    </div>
+                </div>
+
+                <!-- 问卷表单 -->
+                <form id="survey-form" class="space-y-8">
+                    <!-- 基础成本类 -->
+                    <div id="section-1" class="animate-fade">
+                        <h3 class="text-xl font-bold mb-6 text-primary flex items-center">
+                            <i class="fa fa-money mr-2"></i>基础成本类 <span class="ml-2 text-sm font-normal text-gray-500">(算算你的钱花得值不值)</span>
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2" for="tuition">年学费+住宿费（含杂费，元）</label>
+                                <input type="number" id="tuition" name="tuition" required min="0" placeholder="如：15000"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2" for="city">所在城市</label>
+                                <select id="city" name="city" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition">
+                                    <option value="">请选择</option>
+                                    <option value="first">一线城市（北上广深）</option>
+                                    <option value="newfirst">新一线城市</option>
+                                    <option value="second">二线城市</option>
+                                    <option value="third">三四线城市</option>
+                                    <option value="town">乡镇/县城</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2" for="family-support">家庭年支持费用（元）</label>
+                                <input type="number" id="family-support" name="family-support" required min="0" placeholder="如：20000"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2" for="commute">通勤/住宿方式</label>
+                                <select id="commute" name="commute" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition">
+                                    <option value="">请选择</option>
+                                    <option value="dorm">住校（校内宿舍）</option>
+                                    <option value="home">走读（住家里）</option>
+                                    <option value="rent">校外租房</option>
+                                    <option value="cross">跨城通勤</option>
+                                </select>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-gray-700 font-medium mb-2" for="extra-cost">额外支出（考证/报班/社团等，年均元）</label>
+                                <input type="number" id="extra-cost" name="extra-cost" value="0" min="0" placeholder="如：3000"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition">
+                            </div>
+                        </div>
+                        <div class="mt-8 text-right">
+                            <button type="button" id="next-1" class="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-lg transition text-lg">
+                                下一步 <i class="fa fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 学习生活类 -->
+                    <div id="section-2" class="hidden animate-fade">
+                        <h3 class="text-xl font-bold mb-6 text-primary flex items-center">
+                            <i class="fa fa-book mr-2"></i>学习生活类 <span class="ml-2 text-sm font-normal text-gray-500">(评估你的上课坐牢指数)</span>
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2" for="class-days">每周上课天数</label>
+                                <select id="class-days" name="class-days" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition">
+                                    <option value="">请选择</option>
+                                    <option value="2">2天及以下</option>
+                                    <option value="3">3天</option>
+                                    <option value="4">4天</option>
+                                    <option value="5">5天</option>
+                                    <option value="6">6天及以上</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2" for="study-hours">日均课后学习时长（小时）</label>
+                                <input type="number" id="study-hours" name="study-hours" min="0" max="24" required placeholder="如：3"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2" for="major-satisfaction">专业满意度（1-10分）</label>
+                                <input type="range" id="major-satisfaction" name="major-satisfaction" min="1" max="10" value="5"
+                                    class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary">
+                                <div class="flex justify-between text-sm text-gray-500 mt-1">
+                                    <span>1分（巨坑）</span>
+                                    <span id="major-value">5分</span>
+                                    <span>10分（神仙专业）</span>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2" for="course-useful">课程实用性</label>
+                                <select id="course-useful" name="course-useful" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition">
+                                    <option value="">请选择</option>
+                                    <option value="practice">实践为主（超实用）</option>
+                                    <option value="theory">理论为主（有点用）</option>
+                                    <option value="mixed">半吊子（偶尔有用）</option>
+                                    <option value="useless">纯理论（毫无卵用）</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2" for="library-resources">图书馆/实验室资源</label>
+                                <select id="library-resources" name="library-resources" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition">
+                                    <option value="">请选择</option>
+                                    <option value="excellent">超够用</option>
+                                    <option value="normal">勉强能用</option>
+                                    <option value="poor">从不达标</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2" for="school-type">学校类型</label>
+                                <select id="school-type" name="school-type" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition">
+                                    <option value="">请选择</option>
+                                    <option value="985">985高校</option>
+                                    <option value="211">211高校</option>
+                                    <option value="double-first">双一流高校</option>
+                                    <option value="one">双非一本</option>
+                                    <option value="two">二本</option>
+                                    <option value="college">专科</option>
+                                    <option value="private">民办院校</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mt-8 flex justify-between">
+                            <button type="button" id="prev-2" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-3 px-8 rounded-lg transition text-lg">
+                                <i class="fa fa-arrow-left mr-1"></i> 上一步
+                            </button>
+                            <button type="button" id="next-2" class="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-lg transition text-lg">
+                                下一步 <i class="fa fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 环境适配类 -->
+                    <div id="section-3" class="hidden animate-fade">
+                        <h3 class="text-xl font-bold mb-6 text-primary flex items-center">
+                            <i class="fa fa-home mr-2"></i>环境适配类 <span class="ml-2 text-sm font-normal text-gray-500">(检验你的宿舍生存能力)</span>
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2" for="hometown">是否在家乡上学</label>
+                                <select id="hometown" name="hometown" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition">
+                                    <option value="">请选择</option>
+                                    <option value="yes">是（同城）</option>
+                                    <option value="near">是（同省不同城）</option>
+                                    <option value="no">否（跨省份）</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2" for="dorm-condition">宿舍条件</label>
+                                <select id="dorm-condition" name="dorm-condition" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition">
+                                    <option value="">请选择</option>
+                                    <option value="excellent">独卫独浴+空调（神仙配置）</option>
+                                    <option value="good">公共卫浴+空调（尚可）</option>
+                                    <option value="normal">公共卫浴无空调（勉强能用）</option>
+                                    <option value="bad">无热水+蟑螂共居（生存模式）</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2" for="canteen">食堂性价比</label>
+                                <select id="canteen" name="canteen" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition">
+                                    <option value="">请选择</option>
+                                    <option value="excellent">好吃不贵（幸福感拉满）</option>
+                                    <option value="good">能吃饱（性价比一般）</option>
+                                    <option value="bad">又贵又难吃（勉强果腹）</option>
+                                    <option value="worse">全靠外卖续命（钱包空空）</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2" for="campus-atmosphere">校园氛围</label>
+                                <select id="campus-atmosphere" name="campus-atmosphere" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition">
+                                    <option value="">请选择</option>
+                                    <option value="study">卷王遍地（学习氛围浓）</option>
+                                    <option value="active">活动丰富（活力满满）</option>
+                                    <option value="lazy">摆烂为主（轻松惬意）</option>
+                                    <option value="boring">死气沉沉（毫无乐趣）</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-xl font-bold mb-6 text-primary flex items-center mt-12">
+                            <i class="fa fa-line-chart mr-2"></i>发展前景类 <span class="ml-2 text-sm font-normal text-gray-500">(预测你的毕业即失业风险)</span>
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2" for="employment-rate">专业就业率（%）</label>
+                                <input type="number" id="employment-rate" name="employment-rate" min="0" max="100" required placeholder="如：85"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2" for="starting-salary">学长学姐平均起薪（元/月）</label>
+                                <input type="number" id="starting-salary" name="starting-salary" required min="0" placeholder="如：8000"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2" for="intern-resources">实习/校招资源</label>
+                                <select id="intern-resources" name="intern-resources" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition">
+                                    <option value="">请选择</option>
+                                    <option value="abundant">多到挑花眼</option>
+                                    <option value="normal">有但一般</option>
+                                    <option value="few">很少</option>
+                                    <option value="none">全靠自己找</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2" for="mentor">导师/辅导员靠谱度</label>
+                                <select id="mentor" name="mentor" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition">
+                                    <option value="">请选择</option>
+                                    <option value="excellent">神仙导师（超负责）</option>
+                                    <option value="normal">一般（有事能找到）</option>
+                                    <option value="bad">甩手掌柜（找不到人）</option>
+                                    <option value="worse">PUA达人（避雷）</option>
+                                </select>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-gray-700 font-medium mb-2" for="interest-match">个人兴趣与专业匹配度</label>
+                                <div class="flex items-center space-x-4">
+                                    <span class="text-sm text-gray-500">完全不搭</span>
+                                    <input type="range" id="interest-match" name="interest-match" min="1" max="5" value="3"
+                                        class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary">
+                                    <span class="text-sm text-gray-500">高度契合</span>
+                                </div>
+                                <div class="flex justify-between text-sm text-gray-500 mt-1 px-8">
+                                    <span>1</span>
+                                    <span>2</span>
+                                    <span id="interest-value">3</span>
+                                    <span>4</span>
+                                    <span>5</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8 flex justify-between">
+                            <button type="button" id="prev-3" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-3 px-8 rounded-lg transition text-lg">
+                                <i class="fa fa-arrow-left mr-1"></i> 上一步
+                            </button>
+                            <button type="button" id="next-3" class="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-lg transition text-lg">
+                                下一步 <i class="fa fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 附加福利类 -->
+                    <div id="section-4" class="hidden animate-fade">
+                        <h3 class="text-xl font-bold mb-6 text-primary flex items-center">
+                            <i class="fa fa-gift mr-2"></i>附加福利类 <span class="ml-2 text-sm font-normal text-gray-500">(看看你能薅到多少羊毛)</span>
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2" for="scholarship">奖学金覆盖率</label>
+                                <select id="scholarship" name="scholarship" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition">
+                                    <option value="">请选择</option>
+                                    <option value="easy">容易拿（努力就有）</option>
+                                    <option value="normal">一般（竞争激烈）</option>
+                                    <option value="hard">拼尽全力（少数人获得）</option>
+                                    <option value="none">基本没有（纯纯摆设）</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2" for="practice">带薪/免费实践机会</label>
+                                <select id="practice" name="practice" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition">
+                                    <option value="">请选择</option>
+                                    <option value="many">超多（科研/支教/企业合作）</option>
+                                    <option value="some">有一些（偶尔有机会）</option>
+                                    <option value="few">很少（基本没有）</option>
+                                    <option value="none">完全没有</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2" for="facilities">校园设施完备度</label>
+                                <select id="facilities" name="facilities" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition">
+                                    <option value="">请选择</option>
+                                    <option value="excellent">超齐全（健身房/球场/咖啡馆）</option>
+                                    <option value="good">基本齐全（满足日常需求）</option>
+                                    <option value="normal">一般（能用但老旧）</option>
+                                    <option value="bad">匮乏（啥也没有）</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2" for="holiday">节假日放假时长</label>
+                                <select id="holiday" name="holiday" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition">
+                                    <option value="">请选择</option>
+                                    <option value="more">提前放假（快乐加倍）</option>
+                                    <option value="normal">按规定来（中规中矩）</option>
+                                    <option value="less">经常补课（假期缩水）</option>
+                                    <option value="worse">极少放假（坐牢体验）</option>
+                                </select>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-gray-700 font-medium mb-2" for="wifi">校园WiFi/网络速度</label>
+                                <select id="wifi" name="wifi" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition">
+                                    <option value="">请选择</option>
+                                    <option value="excellent">秒加载（追剧游戏无压力）</option>
+                                    <option value="good">勉强能用（偶尔卡顿）</option>
+                                    <option value="bad">经常卡顿（刷视频都难）</option>
+                                    <option value="worse">常年断连（与世隔绝）</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mt-8 flex justify-between">
+                            <button type="button" id="prev-4" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-3 px-8 rounded-lg transition text-lg">
+                                <i class="fa fa-arrow-left mr-1"></i> 上一步
+                            </button>
+                            <button type="submit" id="submit-form" class="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-lg transition text-lg">
+                                算完了！给我准话 <i class="fa fa-magic ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 报告生成区 -->
+    <section id="result" class="py-16 bg-gradient-to-br from-orange-50 to-blue-50 hidden">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-bold mb-2 text-center font-comic">你的大学性价比暴击报告</h2>
+            <p class="text-gray-600 text-center mb-12">前方高能！真实结论来袭，做好心理准备~</p>
+            
+            <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden meme-border">
+                <!-- 报告头部 -->
+                <div class="bg-gradient-to-r from-primary to-orange-500 text-white p-6 md:p-8">
+                    <div class="flex flex-col md:flex-row justify-between items-center">
+                        <div>
+                            <h3 class="text-xl md:text-2xl font-bold mb-2">大学性价比得分</h3>
+                            <p class="opacity-90">综合评分 · 精准测算</p>
+                        </div>
+                        <div class="mt-4 md:mt-0 text-center md:text-right">
+                            <div id="total-score" class="text-4xl md:text-5xl font-bold">XX分</div>
+                            <div id="score-tag" class="mt-1 px-3 py-1 rounded-full text-sm font-medium inline-block bg-white/20">
+                                血赚不亏
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 一句话结论 -->
+                <div class="p-6 border-b border-gray-100">
+                    <h4 class="font-bold text-lg mb-3 flex items-center">
+                        <i class="fa fa-comment text-primary mr-2"></i>一句话结论
+                    </h4>
+                    <p id="conclusion" class="text-gray-700 text-lg font-medium">
+                        姐妹/兄弟，这学没白上！性价比直接拉满，抱紧学校大腿好好冲，毕业稳赚！
+                    </p>
+                </div>
+
+                <!-- 分项指标评估 -->
+                <div class="p-6">
+                    <h4 class="font-bold text-lg mb-6 flex items-center">
+                        <i class="fa fa-star text-primary mr-2"></i>分项指标评估
+                    </h4>
+                    
+                    <div class="space-y-8">
+                        <!-- 成本性价比 -->
+                        <div class="card-hover bg-gray-50 p-4 rounded-xl border-l-4 border-primary">
+                            <div class="flex justify-between items-center mb-3">
+                                <h5 class="font-bold text-gray-800 flex items-center">
+                                    <i class="fa fa-money text-primary mr-2"></i>成本性价比
+                                </h5>
+                                <span id="cost-score" class="text-primary font-bold text-lg">85分</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5 mb-2">
+                                <div id="cost-bar" class="bg-primary h-2.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                            <p id="cost-comment" class="text-gray-600 text-sm italic">
+                                学费刺客指数：20% | 吐槽：这学费花得像买了杯天价奶茶，好喝但心疼
+                            </p>
+                        </div>
+
+                        <!-- 学习体验 -->
+                        <div class="card-hover bg-gray-50 p-4 rounded-xl border-l-4 border-info">
+                            <div class="flex justify-between items-center mb-3">
+                                <h5 class="font-bold text-gray-800 flex items-center">
+                                    <i class="fa fa-book text-info mr-2"></i>学习体验
+                                </h5>
+                                <span id="study-score" class="text-info font-bold text-lg">90分</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5 mb-2">
+                                <div id="study-bar" class="bg-info h-2.5 rounded-full" style="width: 90%"></div>
+                            </div>
+                            <p id="study-comment" class="text-gray-600 text-sm italic">
+                                上课坐牢指数：10% | 吐槽：老师讲课像念咒语，作业多到凌晨两点，主打一个"来都来了"
+                            </p>
+                        </div>
+
+                        <!-- 生活适配 -->
+                        <div class="card-hover bg-gray-50 p-4 rounded-xl border-l-4 border-warning">
+                            <div class="flex justify-between items-center mb-3">
+                                <h5 class="font-bold text-gray-800 flex items-center">
+                                    <i class="fa fa-home text-warning mr-2"></i>生活适配
+                                </h5>
+                                <span id="life-score" class="text-warning font-bold text-lg">70分</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5 mb-2">
+                                <div id="life-bar" class="bg-warning h-2.5 rounded-full" style="width: 70%"></div>
+                            </div>
+                            <p id="life-comment" class="text-gray-600 text-sm italic">
+                                宿舍生存指数：70% | 吐槽：宿舍条件堪比叙利亚战场，能活着毕业已是万幸/住着比家里还舒服
+                            </p>
+                        </div>
+
+                        <!-- 发展潜力 -->
+                        <div class="card-hover bg-gray-50 p-4 rounded-xl border-l-4 border-success">
+                            <div class="flex justify-between items-center mb-3">
+                                <h5 class="font-bold text-gray-800 flex items-center">
+                                    <i class="fa fa-line-chart text-success mr-2"></i>发展潜力
+                                </h5>
+                                <span id="future-score" class="text-success font-bold text-lg">92分</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5 mb-2">
+                                <div id="future-bar" class="bg-success h-2.5 rounded-full" style="width: 92%"></div>
+                            </div>
+                            <p id="future-comment" class="text-gray-600 text-sm italic">
+                                毕业即失业风险：5% | 吐槽：校招资源少得可怜，学长学姐都在转行，你还在硬撑？/大厂offer拿到手软，前途无量！
+                            </p>
+                        </div>
+
+                        <!-- 福利加分 -->
+                        <div class="card-hover bg-gray-50 p-4 rounded-xl border-l-4 border-purple-500">
+                            <div class="flex justify-between items-center mb-3">
+                                <h5 class="font-bold text-gray-800 flex items-center">
+                                    <i class="fa fa-gift text-purple-500 mr-2"></i>福利加分
+                                </h5>
+                                <span id="welfare-score" class="text-purple-500 font-bold text-lg">88分</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5 mb-2">
+                                <div id="welfare-bar" class="bg-purple-500 h-2.5 rounded-full" style="width: 88%"></div>
+                            </div>
+                            <p id="welfare-comment" class="text-gray-600 text-sm italic">
+                                羊毛可薅指数：90% | 吐槽：奖学金难拿如登天，校园福利等于没有/学校羊毛多到薅不完，血赚！
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 终极建议 -->
+                <div class="p-6 border-t border-gray-100 bg-gray-50">
+                    <h4 class="font-bold text-lg mb-3 flex items-center">
+                        <i class="fa fa-lightbulb-o text-primary mr-2"></i>终极建议
+                    </h4>
+                    <div id="suggestion" class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-primary">
+                        <p class="text-gray-700">
+                            1. 继续保持当前状态，充分利用学校资源提升自己；<br>
+                            2. 积极参与实习和科研项目，为简历加分；<br>
+                            3. 多和优秀的学长学姐交流，获取更多发展机会~
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 操作按钮 -->
+                <div class="p-6 flex flex-col sm:flex-row justify-center gap-4 bg-gray-50 border-t border-gray-100">
+                    <button id="restart-btn" class="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-full shadow transition card-hover text-lg">
+                        重新测算，换个姿势再来 <i class="fa fa-redo ml-1"></i>
+                    </button>
+                    <button id="share-btn" class="bg-white hover:bg-gray-100 text-primary border-2 border-primary font-bold py-3 px-8 rounded-full shadow transition card-hover text-lg">
+                        <i class="fa fa-share-alt mr-2"></i>分享给同学，看看谁是最冤的大学牲
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 示例报告区 -->
+    <section id="example" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-bold mb-2 text-center font-comic">冤种案例参考</h2>
+            <p class="text-gray-600 text-center mb-12">看看别人的测算结果，提前感受一下~</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- 案例1：血赚不亏 -->
+                <div class="bg-gradient-to-br from-green-50 to-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="bg-success text-white p-6">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-bold">血赚不亏型</h3>
+                            <div class="text-3xl font-bold">88分</div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold text-lg mb-3">某985高校计算机专业</h4>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span>学费刺客指数</span>
+                                    <span>15%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-success h-2 rounded-full" style="width: 15%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span>上课坐牢指数</span>
+                                    <span>20%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-success h-2 rounded-full" style="width: 20%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span>毕业失业风险</span>
+                                    <span>5%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-success h-2 rounded-full" style="width: 5%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mt-4 italic">
+                            "校招进大厂，年薪30w+，这学费交得值！"
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 案例2：凑活能读 -->
+                <div class="bg-gradient-to-br from-yellow-50 to-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="bg-warning text-white p-6">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-bold">凑活能读型</h3>
+                            <div class="text-3xl font-bold">65分</div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold text-lg mb-3">某二本院校工商管理</h4>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span>学费刺客指数</span>
+                                    <span>45%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-warning h-2 rounded-full" style="width: 45%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span>上课坐牢指数</span>
+                                    <span>60%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-warning h-2 rounded-full" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span>毕业失业风险</span>
+                                    <span>40%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-warning h-2 rounded-full" style="width: 40%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mt-4 italic">
+                            "理论课太多，实践少，得自己多找实习弥补"
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 案例3：纯纯冤种 -->
+                <div class="bg-gradient-to-br from-red-50 to-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="bg-danger text-white p-6">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-bold">纯纯冤种型</h3>
+                            <div class="text-3xl font-bold">35分</div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold text-lg mb-3">某民办院校冷门专业</h4>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span>学费刺客指数</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-danger h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span>上课坐牢指数</span>
+                                    <span>75%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-danger h-2 rounded-full" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span>毕业失业风险</span>
+                                    <span>70%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-danger h-2 rounded-full" style="width: 70%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mt-4 italic">
+                            "学费贵，课程水，就业难，栓Q了！"
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <a href="#questionnaire" class="inline-block bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-full shadow transition card-hover text-lg">
+                    测测我的真实情况 <i class="fa fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center space-x-2 mb-2">
+                        <i class="fa fa-graduation-cap text-primary text-2xl"></i>
+                        <h2 class="text-xl font-bold font-comic">大学性价比暴击测算仪</h2>
+                    </div>
+                    <p class="text-gray-400 text-sm">仅供娱乐，理性看待结果~</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-primary transition">
+                        <i class="fa fa-weibo text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition">
+                        <i class="fa fa-wechat text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition">
+                        <i class="fa fa-qq text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+                © 2025 大学性价比暴击测算仪 版权所有 | 仅供娱乐，非官方测评工具
+            </div>
+        </div>
+    </footer>
+
+    <!-- 分享弹窗 -->
+    <div id="share-modal" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-2xl p-6 max-w-md w-full mx-4">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold text-gray-900 font-comic">分享给同学</h3>
+                <button id="close-modal" class="text-gray-400 hover:text-gray-600">
+                    <i class="fa fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="flex flex-col items-center">
+                <p class="text-gray-600 mb-6 text-center">看看谁是最冤的大学牲~</p>
+                <div class="flex justify-center space-x-8 mb-6">
+                    <a href="#" class="flex flex-col items-center text-gray-700 hover:text-primary transition">
+                        <i class="fa fa-wechat text-3xl mb-2"></i>
+                        <span class="text-sm">微信</span>
+                    </a>
+                    <a href="#" class="flex flex-col items-center text-gray-700 hover:text-primary transition">
+                        <i class="fa fa-qq text-3xl mb-2"></i>
+                        <span class="text-sm">QQ</span>
+                    </a>
+                    <a href="#" class="flex flex-col items-center text-gray-700 hover:text-primary transition">
+                        <i class="fa fa-weibo text-3xl mb-2"></i>
+                        <span class="text-sm">微博</span>
+                    </a>
+                </div>
+                <button id="copy-link" class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-2 px-4 rounded-lg transition">
+                    复制链接
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 移动端菜单切换
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // 进度条和页面切换
+        document.getElementById('next-1').addEventListener('click', function() {
+            if (validateSection(1)) {
+                document.getElementById('section-1').classList.add('hidden');
+                document.getElementById('section-2').classList.remove('hidden');
+                document.getElementById('progress-bar').style.width = '50%';
+            }
+        });
+
+        document.getElementById('prev-2').addEventListener('click', function() {
+            document.getElementById('section-2').classList.add('hidden');
+            document.getElementById('section-1').classList.remove('hidden');
+            document.getElementById('progress-bar').style.width = '25%';
+        });
+
+        document.getElementById('next-2').addEventListener('click', function() {
+            if (validateSection(2)) {
+                document.getElementById('section-2').classList.add('hidden');
+                document.getElementById('section-3').classList.remove('hidden');
+                document.getElementById('progress-bar').style.width = '75%';
+            }
+        });
+
+        document.getElementById('prev-3').addEventListener('click', function() {
+            document.getElementById('section-3').classList.add('hidden');
+            document.getElementById('section-2').classList.remove('hidden');
+            document.getElementById('progress-bar').style.width = '50%';
+        });
+
+        document.getElementById('next-3').addEventListener('click', function() {
+            if (validateSection(3)) {
+                document.getElementById('section-3').classList.add('hidden');
+                document.getElementById('section-4').classList.remove('hidden');
+                document.getElementById('progress-bar').style.width = '100%';
+            }
+        });
+
+        document.getElementById('prev-4').addEventListener('click', function() {
+            document.getElementById('section-4').classList.add('hidden');
+            document.getElementById('section-3').classList.remove('hidden');
+            document.getElementById('progress-bar').style.width = '75%';
+        });
+
+        // 滑块值实时显示
+        document.getElementById('major-satisfaction').addEventListener('input', function() {
+            document.getElementById('major-value').textContent = this.value + '分';
+        });
+
+        document.getElementById('interest-match').addEventListener('input', function() {
+            document.getElementById('interest-value').textContent = this.value;
+        });
+
+        // 表单提交处理
+        document.getElementById('survey-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (validateSection(4)) {
+                calculateResult();
+                document.getElementById('questionnaire').classList.add('hidden');
+                document.getElementById('result').classList.remove('hidden');
+                // 滚动到结果区
+                document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+        // 重新测算
+        document.getElementById('restart-btn').addEventListener('click', function() {
+            document.getElementById('result').classList.add('hidden');
+            document.getElementById('questionnaire').classList.remove('hidden');
+            document.getElementById('section-4').classList.add('hidden');
+            document.getElementById('section-1').classList.remove('hidden');
+            document.getElementById('progress-bar').style.width = '25%';
+            document.getElementById('survey-form').reset();
+            document.getElementById('major-value').textContent = '5分';
+            document.getElementById('interest-value').textContent = '3';
+            // 滚动到问卷区
+            document.getElementById('questionnaire').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // 分享功能
+        document.getElementById('share-btn').addEventListener('click', function() {
+            document.getElementById('share-modal').classList.remove('hidden');
+        });
+
+        document.getElementById('close-modal').addEventListener('click', function() {
+            document.getElementById('share-modal').classList.add('hidden');
+        });
+
+        document.getElementById('copy-link').addEventListener('click', function() {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+                alert('链接复制成功！');
+                document.getElementById('share-modal').classList.add('hidden');
+            });
+        });
+
+        // 点击模态框外部关闭
+        document.getElementById('share-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.add('hidden');
+            }
+        });
+
+        // 表单验证函数
+        function validateSection(sectionNum) {
+            const section = document.getElementById(`section-${sectionNum}`);
+            const inputs = section.querySelectorAll('input[required], select[required]');
+            let isValid = true;
+            
+            inputs.forEach(input => {
+                if (!input.value) {
+                    isValid = false;
+                    input.classList.add('border-red-500');
+                    
+                    // 添加错误提示
+                    if (!input.nextElementSibling || !input.nextElementSibling.classList.contains('error-message')) {
+                        const errorMsg = document.createElement('p');
+                        errorMsg.className = 'error-message text-red-500 text-sm mt-1';
+                        errorMsg.textContent = '请填写此字段';
+                        input.parentNode.appendChild(errorMsg);
+                    }
+                } else {
+                    input.classList.remove('border-red-500');
+                    
+                    // 移除错误提示
+                    const errorMsg = input.parentNode.querySelector('.error-message');
+                    if (errorMsg) {
+                        errorMsg.remove();
+                    }
+                }
+            });
+            
+            if (!isValid) {
+                // 滚动到第一个错误字段
+                const firstError = section.querySelector('.border-red-500');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+            
+            return isValid;
+        }
+
+        // 核心计算逻辑
+        function calculateResult() {
+            // 获取表单数据
+            const tuition = parseInt(document.getElementById('tuition').value) || 0;
+            const city = document.getElementById('city').value;
+            const familySupport = parseInt(document.getElementById('family-support').value) || 0;
+            const commute = document.getElementById('commute').value;
+            const extraCost = parseInt(document.getElementById('extra-cost').value) || 0;
+            const classDays = document.getElementById('class-days').value;
+            const studyHours = parseInt(document.getElementById('study-hours').value) || 0;
+            const majorSatisfaction = parseInt(document.getElementById('major-satisfaction').value) || 5;
+            const courseUseful = document.getElementById('course-useful').value;
+            const libraryResources = document.getElementById('library-resources').value;
+            const schoolType = document.getElementById('school-type').value;
+            const hometown = document.getElementById('hometown').value;
+            const dormCondition = document.getElementById('dorm-condition').value;
+            const canteen = document.getElementById('canteen').value;
+            const campusAtmosphere = document.getElementById('campus-atmosphere').value;
+            const employmentRate = parseInt(document.getElementById('employment-rate').value) || 0;
+            const startingSalary = parseInt(document.getElementById('starting-salary').value) || 0;
+            const internResources = document.getElementById('intern-resources').value;
+            const mentor = document.getElementById('mentor').value;
+            const interestMatch = parseInt(document.getElementById('interest-match').value) || 3;
+            const scholarship = document.getElementById('scholarship').value;
+            const practice = document.getElementById('practice').value;
+            const facilities = document.getElementById('facilities').value;
+            const holiday = document.getElementById('holiday').value;
+            const wifi = document.getElementById('wifi').value;
+
+            // 计算各项得分（0-100）
+            // 1. 成本性价比得分
+            let costScore = 0;
+            const costPerYear = tuition + extraCost;
+            if (city === 'first' || city === 'newfirst') {
+                costScore = costPerYear <= 20000 ? 90 : costPerYear <= 30000 ? 70 : costPerYear <= 40000 ? 50 : 30;
+            } else {
+                costScore = costPerYear <= 15000 ? 90 : costPerYear <= 25000 ? 70 : costPerYear <= 35000 ? 50 : 30;
+            }
+            // 通勤方式加分
+            if (commute === 'home') costScore += 10;
+            if (commute === 'rent') costScore -= 10;
+
+            // 2. 学习体验得分
+            let studyScore = majorSatisfaction * 10;
+            // 课程实用性加分
+            if (courseUseful === 'practice') studyScore += 10;
+            else if (courseUseful === 'useless') studyScore -= 10;
+            // 学习时长合理性
+            if (studyHours >= 2 && studyHours <= 6) studyScore += 5;
+            else if (studyHours > 10) studyScore -= 5;
+            // 兴趣匹配度加分
+            studyScore += (interestMatch - 3) * 4;
+            // 图书馆资源
+            if (libraryResources === 'excellent') studyScore += 10;
+            else if (libraryResources === 'poor') studyScore -= 10;
+
+            // 3. 生活适配得分
+            let lifeScore = 0;
+            // 宿舍条件
+            if (dormCondition === 'excellent') lifeScore += 30;
+            else if (dormCondition === 'good') lifeScore += 20;
+            else if (dormCondition === 'normal') lifeScore += 10;
+            // 食堂条件
+            if (canteen === 'excellent') lifeScore += 25;
+            else if (canteen === 'good') lifeScore += 15;
+            else if (canteen === 'bad') lifeScore += 5;
+            // 家乡加分
+            if (hometown === 'yes' || hometown === 'near') lifeScore += 10;
+            // WiFi和设施
+            if (wifi === 'excellent' || wifi === 'good') lifeScore += 15;
+            if (facilities === 'excellent' || facilities === 'good') lifeScore += 15;
+            // 放假时长
+            if (holiday === 'more') lifeScore += 5;
+            if (holiday === 'worse') lifeScore -= 5;
+
+            // 4. 发展潜力得分
+            let futureScore = employmentRate;
+            // 起薪加分
+            if (startingSalary >= 8000) futureScore += 20;
+            else if (startingSalary >= 5000) futureScore += 10;
+            else if (startingSalary < 3000) futureScore -= 10;
+            // 校招资源加分
+            if (internResources === 'abundant') futureScore += 15;
+            else if (internResources === 'none') futureScore -= 15;
+            // 导师加分
+            if (mentor === 'excellent') futureScore += 10;
+            else if (mentor === 'worse') futureScore -= 10;
+            // 学校类型加分
+            if (schoolType === '985' || schoolType === '211' || schoolType === 'double-first') futureScore += 10;
+
+            // 5. 福利加分
+            let welfareScore = 0;
+            // 奖学金
+            if (scholarship === 'easy') welfareScore += 30;
+            else if (scholarship === 'normal') welfareScore += 20;
+            else if (scholarship === 'hard') welfareScore += 10;
+            // 实践机会
+            if (practice === 'many') welfareScore += 25;
+            else if (practice === 'some') welfareScore += 15;
+            else if (practice === 'few') welfareScore += 5;
+            // 校园氛围
+            if (campusAtmosphere === 'active' || campusAtmosphere === 'study') welfareScore += 20;
+            // 设施
+            if (facilities === 'excellent') welfareScore += 25;
+            else if (facilities === 'good') welfareScore += 15;
+
+            // 各项得分限制在0-100
+            costScore = Math.max(0, Math.min(100, costScore));
+            studyScore = Math.max(0, Math.min(100, studyScore));
+            lifeScore = Math.max(0, Math.min(100, lifeScore));
+            futureScore = Math.max(0, Math.min(100, futureScore));
+            welfareScore = Math.max(0, Math.min(100, welfareScore));
+
+            // 计算总分（加权平均）
+            const totalScore = Math.round(
+                costScore * 0.25 +
+                studyScore * 0.25 +
+                lifeScore * 0.2 +
+                futureScore * 0.2 +
+                welfareScore * 0.1
+            );
+
+            // 确定标签和结论
+            let scoreTag, conclusion, suggestion, scoreTagClass;
+            if (totalScore >= 80) {
+                scoreTag = '血赚不亏';
+                scoreTagClass = 'bg-success';
+                conclusion = '姐妹/兄弟，这学没白上！性价比直接拉满，抱紧学校大腿好好冲，毕业稳赚！';
+                suggestion = `1. 继续保持当前状态，充分利用学校优质资源提升自己；<br>
+                            2. 积极参与科研和实习项目，为简历加分；<br>
+                            3. 多和优秀的学长学姐交流，拓展人脉，获取更多发展机会~`;
+            } else if (totalScore >= 60) {
+                scoreTag = '凑活能读';
+                scoreTagClass = 'bg-warning';
+                conclusion = '不算亏但也别指望躺赢，主打一个"边读边提升"，靠自己把性价比拉回来！';
+                suggestion = `1. 针对性提升短板，比如多考证书、积累实习经验；<br>
+                            2. 主动争取学校的优质资源（奖学金、科研项目等）；<br>
+                            3. 制定清晰的职业规划，不要随波逐流，避免毕业即迷茫~`;
+            } else if (totalScore >= 40) {
+                scoreTag = '赶紧自救';
+                scoreTagClass = 'bg-danger/80';
+                conclusion = '救命！这破大学快把你榨干了！赶紧转专业/考证书自救，不然毕业即失业警告！';
+                suggestion = `1. 评估转专业可能性，尽早逃离天坑专业；<br>
+                            2. 跨专业学习或辅修第二学位，拓宽就业方向；<br>
+                            3. 疯狂积累实习经验，靠实力弥补学校和专业的不足，别摆烂！`;
+            } else {
+                scoreTag = '纯纯冤种';
+                scoreTagClass = 'bg-danger';
+                conclusion = '宝子，快跑！这破大学性价比为负，再待下去青春都要被消耗完了！';
+                suggestion = `1. 立刻规划跑路方案：考研、留学、退学复读选一个赶紧执行；<br>
+                            2. 如果暂时无法离开，就把它当成跳板，疯狂提升自己；<br>
+                            3. 别被环境同化，保持清醒，你的未来不在这所破大学里！`;
+            }
+
+            // 生成吐槽评论
+            const costComment = getCostComment(costScore, costPerYear);
+            const studyComment = getStudyComment(studyScore, studyHours, courseUseful);
+            const lifeComment = getLifeComment(lifeScore, dormCondition, canteen);
+            const futureComment = getFutureComment(futureScore, employmentRate, startingSalary, internResources);
+            const welfareComment = getWelfareComment(welfareScore, scholarship, practice);
+
+            // 更新页面数据
+            document.getElementById('total-score').textContent = totalScore + '分';
+            const scoreTagEl = document.getElementById('score-tag');
+            scoreTagEl.textContent = scoreTag;
+            scoreTagEl.className = `mt-1 px-3 py-1 rounded-full text-sm font-medium inline-block ${scoreTagClass} text-white`;
+            document.getElementById('conclusion').textContent = conclusion;
+            document.getElementById('suggestion').innerHTML = suggestion;
+
+            // 更新分项数据
+            document.getElementById('cost-score').textContent = costScore + '分';
+            document.getElementById('cost-bar').style.width = costScore + '%';
+            document.getElementById('cost-comment').textContent = costComment;
+
+            document.getElementById('study-score').textContent = studyScore + '分';
+            document.getElementById('study-bar').style.width = studyScore + '%';
+            document.getElementById('study-comment').textContent = studyComment;
+
+            document.getElementById('life-score').textContent = lifeScore + '分';
+            document.getElementById('life-bar').style.width = lifeScore + '%';
+            document.getElementById('life-comment').textContent = lifeComment;
+
+            document.getElementById('future-score').textContent = futureScore + '分';
+            document.getElementById('future-bar').style.width = futureScore + '%';
+            document.getElementById('future-comment').textContent = futureComment;
+
+            document.getElementById('welfare-score').textContent = welfareScore + '分';
+            document.getElementById('welfare-bar').style.width = welfareScore + '%';
+            document.getElementById('welfare-comment').textContent = welfareComment;
+        }
+
+        // 生成各分项吐槽评论
+        function getCostComment(score, cost) {
+            const rate = Math.round((100 - score) / 2);
+            if (score >= 90) {
+                return `学费刺客指数：${rate}% | 吐槽：这学费花得太值了！相当于买了份优质投资，未来稳赚！`;
+            } else if (score >= 70) {
+                return `学费刺客指数：${rate}% | 吐槽：这学费花得还算合理，物有所值，不算亏~`;
+            } else if (score >= 50) {
+                return `学费刺客指数：${rate}% | 吐槽：这学费花得像买了杯普通奶茶，不好不坏，没惊喜也没太亏`;
+            } else {
+                return `学费刺客指数：${rate}% | 吐槽：这学费就是纯纯智商税！花了这么多钱，体验却一言难尽`;
+            }
+        }
+
+        function getStudyComment(score, hours, course) {
+            const rate = Math.round((100 - score) / 1.5);
+            if (score >= 90) {
+                return `上课坐牢指数：${rate}% | 吐槽：老师讲课生动有趣，作业量适中，学习体验拉满，根本不想逃课！`;
+            } else if (score >= 70) {
+                return `上课坐牢指数：${rate}% | 吐槽：学习体验还不错，老师认真负责，课程实用性强，稍微努力就能有收获~`;
+            } else if (score >= 50) {
+                return `上课坐牢指数：${rate}% | 吐槽：老师讲课中规中矩，作业不算太多，主打一个"凑活能学"`;
+            } else {
+                return `上课坐牢指数：${rate}% | 吐槽：老师讲课像念咒语，课程毫无用处，作业多到凌晨两点，主打一个"来都来了"`;
+            }
+        }
+
+        function getLifeComment(score, dorm, canteen) {
+            const rate = Math.round((100 - score) / 1.2);
+            if (score >= 90) {
+                return `宿舍生存指数：${score}% | 吐槽：宿舍条件堪比星级酒店，食堂好吃不贵，住着比家里还舒服！`;
+            } else if (score >= 70) {
+                return `宿舍生存指数：${score}% | 吐槽：宿舍条件尚可，食堂能吃饱，校园生活还算舒适~`;
+            } else if (score >= 50) {
+                return `宿舍生存指数：${score}% | 吐槽：宿舍条件一般，食堂偶尔踩雷，主打一个"能住能吃"`;
+            } else {
+                return `宿舍生存指数：${score}% | 吐槽：宿舍条件堪比叙利亚战场，能活着毕业已是万幸/住着比家里还舒服`;
+            }
+        }
+
+        function getFutureComment(score, employment, salary, resources) {
+            const risk = Math.round((100 - score) / 1.5);
+            if (score >= 90) {
+                return `毕业即失业风险：${risk}% | 吐槽：校招资源多到挑花眼，大厂offer拿到手软，前途无量！`;
+            } else if (score >= 70) {
+                return `毕业即失业风险：${risk}% | 吐槽：就业前景不错，只要稍微努力，就能找到满意的工作~`;
+            } else if (score >= 50) {
+                return `毕业即失业风险：${risk}% | 吐槽：就业压力有点大，校招资源一般，需要自己多主动争取机会`;
+            } else {
+                return `毕业即失业风险：${risk}% | 吐槽：校招资源少得可怜，学长学姐都在转行，你还在硬撑？`;
+            }
+        }
+
+        function getWelfareComment(score, scholarship, practice) {
+            const rate = Math.round(score);
+            if (score >= 90) {
+                return `羊毛可薅指数：${rate}% | 吐槽：奖学金好拿，实践机会多，学校羊毛多到薅不完，血赚！`;
+            } else if (score >= 70) {
+                return `羊毛可薅指数：${rate}% | 吐槽：学校福利还不错，努力就能拿到奖学金，偶尔有优质实践机会~`;
+            } else if (score >= 50) {
+                return `羊毛可薅指数：${rate}% | 吐槽：福利一般般，奖学金难拿，实践机会很少，基本没什么羊毛可薅`;
+            } else {
+                return `羊毛可薅指数：${rate}% | 吐槽：奖学金难拿如登天，校园福利等于没有`;
+            }
+        }
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
